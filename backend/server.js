@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import detenv from "dotenv";
 import mongoose from "mongoose";
-import { config } from "./config/config.js";
+import { config } from "./src/config/config.js";
+import authRouter from "./src/routers/authRouter.js";
+import loginRouter from "./src/routers/loginRouter.js";
 
 const app = express();
 const port = config.port;
@@ -18,6 +20,10 @@ app.get("/", (re, res) => {
     message: "Welcome to the Rental App API",
   });
 });
+
+app.use("/api/v1/auth", authRouter);
+
+app.use("/api/v1/users", loginRouter);
 
 mongoose
   .connect(mongo_url)

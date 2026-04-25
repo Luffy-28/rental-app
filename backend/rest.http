@@ -1,0 +1,29 @@
+@rootUrl= http://localhost:5003/api/v1
+@authUrl= {{rootUrl}}/auth
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbGUzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzc3MTIyNzgxLCJleHAiOjE3NzcyMDkxODF9.wI0Xued52lAEu1wde96mwtFwhE5wv7ivxGBj1garBMI
+###
+POST {{authUrl}}/register
+Content-Type: application/json
+
+{
+    "firstName": "role",
+    "lastName": "Doe",
+    "email": "role3@example.com",
+    "password": "123456",
+    "confirmPassword": "123456",
+    "phone": "0400000000"
+}
+
+###
+POST {{authUrl}}/login
+Content-Type: application/json
+
+{
+    "email":"role3@example.com",
+    "password":"123456"
+}
+
+
+###
+GET {{rootUrl}}/users
+Authorization: {{token}}
